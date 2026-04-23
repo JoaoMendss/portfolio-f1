@@ -1,0 +1,85 @@
+.pitstop {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+}
+
+.pitstop__track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  height: 40px;
+}
+
+.pitstop__line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0px,
+    var(--red) 12px,
+    transparent 12px,
+    transparent 24px
+  );
+  opacity: 0.3;
+}
+
+.pitstop__car {
+  position: absolute;
+  left: -100px;
+  width: 80px;
+  animation: car-drive 4s linear infinite;
+}
+
+.pitstop__car svg {
+  width: 80px;
+}
+
+@keyframes car-drive {
+  from { left: -100px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { left: calc(100% + 100px); opacity: 0; }
+}
+
+.pitstop__label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--text-dimmer);
+  letter-spacing: 6px;
+  background: var(--bg);
+  padding: 0 20px;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.pitstop__sparks {
+  display: flex;
+  gap: 8px;
+}
+
+.pitstop__spark {
+  width: 2px;
+  height: 8px;
+  background: var(--red);
+  border-radius: 1px;
+  opacity: 0;
+  animation: spark 1.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.2s);
+}
+
+@keyframes spark {
+  0%, 100% { opacity: 0; transform: scaleY(1); }
+  50% { opacity: 0.8; transform: scaleY(2); background: var(--yellow); }
+}

@@ -1,0 +1,238 @@
+.education {
+  padding: 100px 60px;
+  background: var(--bg);
+  position: relative;
+}
+
+.education__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Main IFPR card */
+.education__main {
+  border: 1px solid var(--border-red);
+  background: var(--surface);
+  padding: 40px;
+  margin-bottom: 60px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.2s;
+  overflow: hidden;
+}
+
+.education__main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red), transparent);
+}
+
+.education__main--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education__main-badge {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 9px;
+  color: #00e676;
+  letter-spacing: 3px;
+  border: 1px solid rgba(0,230,118,0.3);
+  padding: 4px 10px;
+}
+
+.education__main-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.education__main-logo {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--red);
+  text-shadow: 0 0 30px var(--red-glow);
+  flex-shrink: 0;
+  width: 100px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.education__main-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.education__main-sub {
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.education__main-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+  font-family: var(--body);
+  font-weight: 300;
+}
+
+.education__main-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.education__main-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.education__meta-label {
+  font-size: 9px;
+  color: var(--text-dimmer);
+  letter-spacing: 2px;
+}
+
+.education__meta-value {
+  font-size: 11px;
+  color: var(--text);
+  letter-spacing: 2px;
+}
+
+/* Timeline */
+.education__timeline {
+  position: relative;
+  padding-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.education__timeline-track {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(var(--red), var(--border));
+}
+
+.education__event {
+  position: relative;
+  padding: 24px 0 24px 40px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease;
+  border-bottom: 1px solid var(--border);
+}
+
+.education__event:last-child {
+  border-bottom: none;
+}
+
+.education__event--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.education__event--current .education__event-content {
+  background: rgba(232,0,45,0.03);
+  border: 1px solid var(--border-red);
+  padding: 20px;
+  margin-top: 8px;
+}
+
+.education__event-year {
+  position: absolute;
+  left: -80px;
+  top: 28px;
+  font-size: 11px;
+  color: var(--red);
+  letter-spacing: 2px;
+  width: 44px;
+  text-align: right;
+}
+
+.education__event-dot {
+  position: absolute;
+  left: -8px;
+  top: 28px;
+  width: 16px;
+  height: 16px;
+  background: var(--bg);
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  z-index: 1;
+}
+
+.education__event--current .education__event-dot {
+  border-color: #00e676;
+  box-shadow: 0 0 10px rgba(0,230,118,0.4);
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+.education__event-type {
+  font-size: 9px;
+  color: var(--text-dimmer);
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+
+.education__event-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.education__event-sub {
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.education__event-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-family: var(--body);
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .education {
+    padding: 80px 24px;
+  }
+  .education__main-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .education__timeline {
+    padding-left: 60px;
+  }
+  .education__event-year {
+    left: -60px;
+    width: 36px;
+    font-size: 10px;
+  }
+}

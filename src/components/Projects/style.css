@@ -1,0 +1,233 @@
+.projects {
+  padding: 100px 60px;
+  background: var(--bg2);
+}
+
+.projects__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  letter-spacing: 3px;
+  margin-bottom: 48px;
+}
+
+.projects__meta-highlight {
+  color: var(--red);
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2px;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s ease, background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card--highlight {
+  border-top: 2px solid var(--red);
+}
+
+.project-card--hovered {
+  background: var(--surface2);
+  border-color: var(--border-red);
+}
+
+/* Top row */
+.project-card__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-card__num {
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 2px;
+}
+
+.project-card__type {
+  font-size: 9px;
+  color: var(--text-dimmer);
+  letter-spacing: 2px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+}
+
+.project-card__status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.project-card__status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* Car visual */
+.project-card__car {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.project-card__position {
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.project-card--hovered .project-card__position {
+  color: rgba(232,0,45,0.1);
+}
+
+.project-card__car-svg {
+  width: 120px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.project-card--hovered .project-card__car-svg {
+  transform: translateX(6px);
+}
+
+/* Exhaust puffs */
+.project-card__exhaust {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.project-card__exhaust-puff {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(232,0,45,0.5);
+  animation: exhaust 0.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes exhaust {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Content */
+.project-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.project-card__name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  line-height: 1.1;
+}
+
+.project-card__subtitle {
+  font-size: 9px;
+  color: var(--red);
+  letter-spacing: 3px;
+}
+
+.project-card__desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.65;
+  font-family: var(--body);
+  font-weight: 300;
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.project-card__tech-tag {
+  font-size: 9px;
+  color: var(--text-dimmer);
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.project-card--hovered .project-card__tech-tag {
+  border-color: var(--border-red);
+  color: var(--text-dim);
+}
+
+/* Speed line decoration */
+.project-card__lines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  display: flex;
+  gap: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.project-card--hovered .project-card__lines {
+  transform: scaleX(1);
+}
+
+.project-card__line {
+  flex: 1;
+  background: var(--red);
+  opacity: 0.6;
+}
+
+.project-card__line:nth-child(2) { opacity: 0.4; }
+.project-card__line:nth-child(3) { opacity: 0.2; }
+
+@media (max-width: 900px) {
+  .projects {
+    padding: 80px 24px;
+  }
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+}
